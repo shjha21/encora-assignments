@@ -1,0 +1,19 @@
+<!DOCTYPE html> 
+<html> 
+<body> 
+<input type="text" id="token" placeholder="Paste JWT Token Here"> 
+<button onclick="callApi()">Call API</button> 
+<pre id="output"></pre> 
+<script> 
+function callApi() { 
+ const token = document.getElementById("token").value; 
+ fetch("http://localhost:8080/api/hello", { 
+ headers: { "Authorization": "Bearer " + token } 
+ }) 
+ .then(r => r.text()) 
+ .then(d => document.getElementById("output").innerText = d) 
+ .catch(e => alert(e)); 
+} 
+</script> 
+</body> 
+</html> 
